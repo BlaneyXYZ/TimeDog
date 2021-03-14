@@ -28,9 +28,9 @@ async def change_time():
 
 @client.command()
 async def servers(message):
-    servers = list(client.guilds)
-    await message.channel.send(f"Connected on {str(len(servers))} servers:")
-    await message.channel.send('\n'.join(server for server in servers))
+    await message.channel.send(f"Connected on {len(client.guilds)} servers:")
+    for guild in client.guilds:
+        await message.channel.send(guild.name)
 
 
 @client.command(name="timezone", help="Changes the current timezone used by the bot, format is Country/City i.e "
