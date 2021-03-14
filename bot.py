@@ -21,9 +21,9 @@ async def on_ready():
 
 @tasks.loop(seconds=10)
 async def change_time():
-    guild = client.get_guild(int(CONFIG_FILE["guild_id"]))
-    await guild.me.edit(
-        nick=pytz.utc.localize(datetime.utcnow()).astimezone(pytz.timezone(bot_timezone)).strftime('%a - %I:%M %p'))
+    for guild in client.guilds:
+        await guild.me.edit(
+            nick=pytz.utc.localize(datetime.utcnow()).astimezone(pytz.timezone(bot_timezone)).strftime('%a - %I:%M %p'))
 
 
 @client.command()
