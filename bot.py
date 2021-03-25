@@ -21,9 +21,14 @@ async def on_ready():
 
 @tasks.loop(seconds=10)
 async def change_time():
-    for guild in client.guilds:
-        await guild.me.edit(
-            nick=pytz.utc.localize(datetime.utcnow()).astimezone(pytz.timezone(bot_timezone)).strftime('%a - %I:%M %p'))
+    try:
+        for guild in client.guilds:
+            await guild.me.edit(
+                nick=pytz.utc.localize(datetime.utcnow()).astimezone(pytz.timezone(bot_timezone)).strftime('%a - %I:%M %p'))
+    except Exception as e:
+        print(e)
+
+
 
 
 @client.command()
