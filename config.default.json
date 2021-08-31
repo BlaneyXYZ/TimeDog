@@ -3,6 +3,7 @@
   "owner": "Blaney",
   "api_key": "",
   "guild_id": "",
-  "timezone": "Australia/Melbourne",
-  "now_playing": "time pass by ;)"
+  "default_timezone": "Australia/Melbourne",
+  "now_playing": "time pass by ;)",
+  "servers": []
 }
