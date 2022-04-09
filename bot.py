@@ -1,9 +1,11 @@
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 import discord
 import pytz
 from discord.ext import commands, tasks
 import logging
+import time
+import humanize
 
 logging.basicConfig(level=logging.ERROR)
 
@@ -12,10 +14,12 @@ client = commands.Bot(command_prefix='!')
 bot_timezone = "Australia/Melbourne"
 
 timezone_dict = {}
+start_time = time.monotonic()
 
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
+
     change_time.start()
     await client.change_presence(activity=discord.Activity(type = discord.ActivityType.watching, name = (CONFIG_FILE["now_playing"])))
     for i in CONFIG_FILE['servers']:
@@ -57,6 +61,10 @@ async def servers(message):
     await message.channel.send(f"Connected on {len(client.guilds)} servers:")
     for guild in client.guilds:
         await message.channel.send(guild.name)
+
+@client.command()
+async def uptime(message):
+    await message.channel.send("Current uptime is {}".format(humanize.naturaltime(timedelta(seconds=time.monotonic() - start_time))))
 
 
 @client.command(name="timezone", help="Changes the current timezone used by the bot, format is Country/City i.e Australia/Melbourne")
