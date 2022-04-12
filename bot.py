@@ -64,13 +64,13 @@ async def servers(message):
 
 @client.command()
 async def uptime(message):
-    await message.channel.send("Current uptime is {}".format(humanize.naturaltime(timedelta(seconds=time.monotonic() - start_time))))
+    await message.channel.send(f"Current uptime is {humanize.naturaltime(timedelta(seconds=time.monotonic() - start_time))}")
 
 
 @client.command(name="timezone", help="Changes the current timezone used by the bot, format is Country/City i.e Australia/Melbourne")
 @commands.is_owner()
 async def cmd_tz(message, timezone):
-    await message.channel.send("Timezone changed to {}".format(timezone))
+    await message.channel.send(f"Timezone changed to {timezone}")
     update_guild(message.guild.id, timezone)
 
 
