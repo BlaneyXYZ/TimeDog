@@ -64,7 +64,7 @@ async def servers(message):
 
 @client.command()
 async def uptime(message):
-    await message.channel.send(f"Current uptime is {humanize.naturaltime(timedelta(seconds=time.monotonic() - start_time))}")
+    await message.channel.send(f"Current uptime is {humanize.precisedelta(timedelta(seconds=time.monotonic() - start_time))}")
 
 
 @client.command(name="timezone", help="Changes the current timezone used by the bot, format is Country/City i.e Australia/Melbourne")
