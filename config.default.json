@@ -2,8 +2,12 @@
   "botname": "TimeDog",
   "owner": "Blaney",
   "api_key": "",
-  "guild_id": "",
   "default_timezone": "Australia/Melbourne",
   "now_playing": "time pass by ;)",
-  "servers": []
+  "servers": [
+    {
+      "guild_id": 1234567890,
+      "timezone": "Australia/Melbourne"
+    }
+  ]
 }
