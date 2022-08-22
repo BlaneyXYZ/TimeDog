@@ -85,7 +85,6 @@ async def uptime(message):
 
 @client.command(name="timezone",
                 help=f"Changes the current timezone used by {botname}, format is Country/City i.e Australia/Melbourne")
-@client.auto
 @commands.is_owner()
 async def cmd_tz(message, timezone):
     await message.channel.send(f"Timezone changed to {timezone}")
